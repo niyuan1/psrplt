@@ -2,6 +2,7 @@
 Plots npy in recognized pulsar format
 
 eg. 
+    
     waterfall
     
     folded spectrum
