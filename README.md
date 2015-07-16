@@ -1,7 +1,8 @@
 # psrplt
 Plots npy in recognized pulsar format
 
-eg. waterfall
+eg. 
+    waterfall
     
     folded spectrum
     
