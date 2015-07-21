@@ -1,4 +1,5 @@
 import Data.py
+from numpy import*
 
 class SpecData(Data):
   def __init__(self, data, t_all, f_all):
