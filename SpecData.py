@@ -42,7 +42,7 @@ class SpecData(Data):
     data = self.data[bstart:bend, ...]
     return SpecData(data, self.telescope, t_window, self.f_all)
     
-  def cropFreq(f_window): #operate on data, crop freq axis
+  def cropFreq(self, f_window): #operate on data, crop freq axis
     interval = self.f_all[1] - self.f_all[0]
     bstart = int(self.data.shape[1]*(f_window[0] - self.f_all[0])/interval)
     bend = int(self.data.shape[1]*(f_window[1] - self.f_all[0])/interval)
@@ -56,6 +56,16 @@ class SpecData(Data):
       print "No polarizations to sum"
       data = self.data
     return SpecData(data, self.telescope, self.t_all, self.f_all)
+  
+  def cleanKnownRFI(self):
+    if self.telescope == 'jb':
+      fstart = min(307., f_all[0])
+      fend = max(313., f_all[1])
+    if self.telescope == 'aro':
+      fstart = min(400., f_all[0])
+      fend = max(800., f_all[1])
+    f_window = (fstart, fend)
+    return self.cropFreq(f_window)
     
   def vlim(self): #get vmin,vmax colorbar limits
     vmin = self.data.mean() - 1*self.data.std()
