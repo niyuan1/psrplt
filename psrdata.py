@@ -4,6 +4,7 @@ class Data:
         self.t_all = t_all      #(start time, end time)
         self.f_all = f_all      #(start freq, end freq)
         self.pol = pol          #(xx pol, yy pol)
+        self.clean = clean
 
     def findPulse(interval): #gets time interval around giant pulse
         profile = self.cleanRFI() #clean rfi
