@@ -41,7 +41,7 @@ else:
     else:
         title = "Plot " + title
         
-    data = [] # make list of data objects
+    Datas = [] # make list of data objects
     for plotFile in args.files: #understand files, make data objects
         if args.telescope == None: #attempt to find telescope name from file
             fileName = plotFile.split('/')[-1]
@@ -52,40 +52,35 @@ else:
                 print "assuming " + plotFile + "is from ARO"
                 telescope = "ARO"
             else: 
-                sys.exit("unable to identify telescope for " + plotFile + ", give telescope as argument --telescope")
-        elif args.telescpe == ('jb' or 'aro'):
-            telescope = "JB"
+                telescope = None
+        elif args.telescpe == 'jb':
+            telescope = "jb"
         elif args.telescpe == 'aro':
-            telescope = "ARO"
+            telescope = "aro"
         else:
-            sys.exit("telescope not recognized")
+            telescope = None
         
         #load numpy file containing data
         plotNpy = np.load(plotFile)
-
-        #get information by telescope
-        if telescope == "JB":
-            pol_select = (0,3)   #get xx, yy pols
-            f_all = (305., 315.) #get freq band
-            clean = (307., 313.) #get clean channels
-        elif telescope == "ARO":
-            pol_select = (0,3)   #get xx, yy pols
-            f_all = (400., 800.) #get freq band
-            clean = (400., 800.) #get clean channels
-
+        
+        spec = True
         #get total time range
         if args.time != None and len(args.time.split(':')) == 2:
             t_all = (args.time.split(':')[0], args.time.split(':')[1])
         elif args.time != None: #nonsensical time given
             sys.exit("give total time limits of all data in seconds as t1:t2")
-        else: #have bins as time unit
-            t_all = (0,plotNpy.shape[0])
+        else: #no time information given
+            spec = False
         
-        #get total frequency range
+        #get frequency information
         if args.freq != None and len(args.freq.split(':')) == 2:
             f_all = (args.freq.split(':')[0], args.freq.split(':')[1])
         elif args.freq != None: #nonsensical freq given
             sys.exit("give total freq limits of all data in MHz as f1:f2")
-        
-        plotNpy = np.load(plotFile)
-        data.append(Data(plotNpy, t_all, f_all, pol_select, clean))
+        else: #no frequency information given
+            spec = False
+            
+        if spec:
+          Datas.append(SpecData(plotNpy, telescope, t_all, f_all))
+        else:
+          Datas.append(Data(plotNpy, telescope))
