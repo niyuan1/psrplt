@@ -16,6 +16,9 @@ class SpecData(Data):
     
   def getClean(self):
     return self.clean
+    
+  def __str__(self):
+    return "Data: time %d to %d, band %d to %d, clean band %d to %d" % (t_all[0],t_all[1],f_all[0],f_all[1],clean[0],clean[1])
   
   def toTime(self, t_bin): #convert a bin to time units
     interval = self.t_all[1] - self.t_all[0]
