@@ -5,6 +5,12 @@ class Data:
     self.data = data        #npy array containing data
     self.telescope = telescope
     
+  def getTelescope(self):
+    return self.telescope
+  
+  def getData(self):
+    return self.data
+    
   def findPulse(self): #gets time bin of giant pulse
     if len(self.data.shape) == 4:
       print "Polarized data, assuming " + self.telescope + " polarization"
