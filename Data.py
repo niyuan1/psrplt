@@ -19,7 +19,7 @@ class Data:
       elif self.telescope == 'aro':
         pols = (0,3)
       else:
-        sys.exit("No polarization information for this telescope")
+        pols = (0,3)
       Unpol.sumPols(pols)
     else:
       Unpol = self
