@@ -47,17 +47,21 @@ else:
             fileName = plotFile.split('/')[-1]
             if (fileName[:2] == 'jb'):
                 print "assuming " + plotFile + "is from JB"
-                telescope = "JB"
+                telescope = "jb"
+                clean = (307., 313.)
             elif (fileName[:3] == 'aro'):
                 print "assuming " + plotFile + "is from ARO"
-                telescope = "ARO"
+                telescope = "aro"
+                clean = (400., 800.)
             else: 
                 telescope = None
         elif args.telescpe == 'jb':
             telescope = "jb"
+            clean = (307., 313.)
         elif args.telescpe == 'aro':
             telescope = "aro"
-        else:
+            clean = (400., 800.)
+            else:
             telescope = None
         
         #load numpy file containing data
@@ -81,6 +85,11 @@ else:
             spec = False
             
         if spec:
-          Datas.append(SpecData(plotNpy, telescope, t_all, f_all))
+          Datas.append(SpecData(plotNpy, t_all, f_all, clean))
         else:
-          Datas.append(Data(plotNpy, telescope))
+          Datas.append(Data(plotNpy))
+    
+    #plot data
+    for data in Datas:
+      print data
+      
