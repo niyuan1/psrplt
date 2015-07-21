@@ -61,9 +61,12 @@ class SpecData(Data):
     if self.telescope == 'jb':
       fstart = min(307., f_all[0])
       fend = max(313., f_all[1])
-    if self.telescope == 'aro':
+    elif self.telescope == 'aro':
       fstart = min(400., f_all[0])
       fend = max(800., f_all[1])
+    else: 
+      print "unknown RFI"
+      f_window = self.f_all
     f_window = (fstart, fend)
     return self.cropFreq(f_window)
     
