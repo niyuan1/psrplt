@@ -14,7 +14,7 @@ class Data:
     return profile.argmax() #get maximum (giant pulse) bin
     
   def getPulseInterval(self, interval): #gets time bin interval around giant pulse
-    pulse = self.findPulse()
+    giant = self.findPulse()
     t = (giant - int(interval/2), giant + (interval/2)) #get time bin interval
     return self.cropTime(t)
     
