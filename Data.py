@@ -7,6 +7,9 @@ class Data:
   def getData(self):
     return self.data
     
+  def __str__(self):
+    return "Data: undefined time, undefined band"
+    
   def findPulse(self): #gets time bin of giant pulse
     if len(self.data.shape) == 4:
       print "Polarized data, assuming (0,3) (xx,yy) polarization"
