@@ -21,7 +21,7 @@ class SpecData(Data):
     tstart, tend = self.t_all[0], self.t_all[1]
     fstart, fend = self.f_all[0], self.f_all[1]
     cstart, cend = self.clean[0], self.clean[1]
-    return "Data: time %f:%f, band %f:%f, clean %f:%f" % (tstart, tend, fstart, fend, cstart, cend)
+    return "Data: time %g:%g, band %g:%g, clean %g:%g" % (tstart, tend, fstart, fend, cstart, cend)
   
   def toTime(self, t_bin): #convert a bin to time units
     interval = self.t_all[1] - self.t_all[0]
