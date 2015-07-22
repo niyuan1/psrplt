@@ -81,8 +81,8 @@ else:
         #get total time range
         if args.time == 'a': #use time range from file name
             if telescope == 'jb' or telescope == 'aro':
-                tstart = float(plotFile.split(':')[-1].split('.')[1].split('+')[0])
-                tend = float(plotFile.split('+')[-1].split('sec')[0])
+                tstart = float('.' + plotFile.split(':')[-1].split('.')[1].split('+')[0])
+                tend = tstart + float(plotFile.split('+')[-1].split('sec')[0])
                 print tstart, tend
                 t_all = (tstart, tend)
             else: 
