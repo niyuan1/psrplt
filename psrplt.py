@@ -116,7 +116,7 @@ else:
         if args.freqWindow != None: #crop freq window
             f_window = (float(args.freqWindow.split(':')[0]), float(args.freqWindow.split(':')[1]))
             plot = data.cropTime(f_window)
-      
+        print data.sumPols().getData().shape
         if len(data.sumPols().getData().shape) == 3:
             print("plotting")
             data.waterplot(plotType)
