@@ -37,8 +37,7 @@ if args.plot == 'P':
     print "[c] compare intensity profile with intensity spectrum profile"
     print "[p] compare 4 polarization intensity spectrum profile"
 else:
-    Datas = [] # make list of data objects
-    for plotFile in args.files: #understand files, make data objects
+    for plotFile in args.files: #operate on files
         if args.telescope == None: #attempt to find telescope name from file
             fileName = plotFile.split('/')[-1]
             if (fileName[:2] == 'jb'):
@@ -106,21 +105,19 @@ else:
         else: #no frequency information given
             spec = False
             
-        if spec:
-            Datas.append(SpecData(plotNpy, t_all, f_all, clean))
+        if spec: #make Data objects
+            data = SpecData(plotNpy, t_all, f_all, clean)
         else:
-            Datas.append(Data(plotNpy))
-    
-    #operate on data and plot
-    for data in Datas:
-      if args.timeWindow != None: #crop time window
-          t_window = (float(args.timeWindow.split(':')[0]), float(args.timeWindow.split(':')[1]))
-          plot = data.cropTime(t_window)
-      if args.freqWindow != None: #crop freq window
-          f_window = (float(args.freqWindow.split(':')[0]), float(args.freqWindow.split(':')[1]))
-          plot = data.cropTime(f_window)
+            data = Data(plotNpy)
+        
+        if args.timeWindow != None: #crop time window
+            t_window = (float(args.timeWindow.split(':')[0]), float(args.timeWindow.split(':')[1]))
+            plot = data.cropTime(t_window)
+        if args.freqWindow != None: #crop freq window
+            f_window = (float(args.freqWindow.split(':')[0]), float(args.freqWindow.split(':')[1]))
+            plot = data.cropTime(f_window)
       
-      if len(data.sumPols().shape) == 3:
-          data.waterplot('i')
+        if len(data.sumPols().shape) == 3:
+            data.waterplot('i')
           
       
