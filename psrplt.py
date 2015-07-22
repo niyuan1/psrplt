@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import argparse
-from psrdata import*
+from Data import*
 
 #parser arguments
 parser = argparse.ArgumentParser(prog='psrplt', description="Plots npy in recognized pulsar format")
