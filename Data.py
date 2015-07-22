@@ -1,7 +1,11 @@
 from numpy import*
 from waterplot import*
 
-class Data: #Data Class
+################################
+# Data Class
+################################
+
+class Data:
   def __init__(self, data):
     self.data = data        #npy array containing data
   
@@ -45,8 +49,12 @@ class Data: #Data Class
     if plotType == 'i':
         plotter(self.sumPols(), plotType)
 
+################################
+# Special Data Class extends Data Class
+# Operates with physical units
+################################
 
-class SpecData(Data): # Special Data Class
+class SpecData(Data): 
   def __init__(self, data, t_all, f_all, clean):
     Data.__init__(self, data)
     self.t_all = t_all
