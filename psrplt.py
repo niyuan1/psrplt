@@ -118,6 +118,6 @@ else:
             plot = data.cropTime(f_window)
       
         if len(data.sumPols().getData().shape) == 3:
-            data.waterplot('i')
+            data.waterplot(plotType)
           
       
