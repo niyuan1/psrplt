@@ -105,9 +105,9 @@ else:
         else: #no frequency information given
             spec = False
             
-        if spec: #make Data objects
+        if spec: #make special Data object with physical units
             data = SpecData(plotNpy, t_all, f_all, clean)
-        else:
+        else: #make basic Data object
             data = Data(plotNpy)
         
         if args.timeWindow != None: #crop time window
@@ -118,6 +118,6 @@ else:
             plot = data.cropTime(f_window)
         
         if len(data.sumPols().getData().shape) == 2:
-            data.waterplot(plotType)
+            data.waterplot(args.plot)
           
       
