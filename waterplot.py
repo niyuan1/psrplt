@@ -2,6 +2,7 @@ import matplotlib.pylab as plt
 import sys
 from numpy import*
 from SpecData import*
+from Data import*
 
 pols = (0,3) #xx,yy polarizations
 
