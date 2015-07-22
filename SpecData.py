@@ -60,7 +60,7 @@ class SpecData(Data):
     return SpecData(data, self.t_all, f_window, self.clean)
     
   def sumPols(self, pols):
-    if len(self.data.shape) == 4:
+    if self.data.shape[-1] == 4:
       data = self.data[..., pols].sum(-1)
     else:
       print "No polarizations to sum"
@@ -69,8 +69,3 @@ class SpecData(Data):
   
   def cleanRFI(self):
     return self.cropFreq(self.clean)
-    
-  def vlim(self): #get vmin,vmax colorbar limits
-    vmin = self.data.mean() - 1*self.data.std()
-    vmax = self.data.mean() + 1*self.data.std()
-    return vmin, vmax
