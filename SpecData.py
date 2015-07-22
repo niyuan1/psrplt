@@ -1,4 +1,3 @@
-import Data
 from numpy import*
 
 class SpecData(Data):
