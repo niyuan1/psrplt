@@ -7,7 +7,7 @@ from Data import*
 pols = (0,3) #xx,yy polarizations
 
 def plotter(data, plotType):
-  if plotType == 'i'
+  if plotType == 'i':
       iPlot(data)
       
 def vlim(data): #get vmin,vmax colorbar limits
