@@ -61,7 +61,7 @@ else:
         elif args.telescpe == 'aro':
             telescope = "aro"
             clean = (400., 800.)
-            else:
+        else:
             telescope = None
         
         #load numpy file containing data
