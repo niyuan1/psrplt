@@ -113,5 +113,5 @@ else:
     
     #plot data
     for data in Datas:
-      print data.getTrange()
+      print data
       
