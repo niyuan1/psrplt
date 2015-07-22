@@ -64,16 +64,11 @@ class SpecData(Data):
     if pols != None and self.data.shape[-1] == 4:
         data = self.data[..., pols].sum(-1)
     elif self.data.shape[-1] == 4:
-        print "Polarized data, assuming (0,3) (xx,yy) polarization"
+        print "Assuming (0,3) (xx,yy) polarization"
         data = self.data[..., (1,3)].sum(-1)
     else: 
-        print "Data is unpolarized"
         data = self.data
     return SpecData(data, self.t_all, self.f_all, self.clean)
   
   def cleanRFI(self): #clean known RFI
     return self.cropFreq(self.clean)
-    
-  def waterplot(self, plotType):
-    if plotType == 'i':
-        plotter(self.sumPols(), plotType)
