@@ -14,10 +14,10 @@ def vlim(data): #get vmin,vmax colorbar limits
     return vmin, vmax
 
 def iPlot(data):
-  plot = data.getData()
-  if plot.shape[-1] == 4:
-      print "Polarized data, assuming (0,3) (xx,yy) polarization"
-      plot = data.sumPols((0,3)).getData()
+  plot = data.sumPols().getData()
+  t_all = data.getTrange()
+  f_all = data.getFrange()
+  
   if len(plot.shape) != 3:
       print "Waterplot may only plot waterfall files"
   
