@@ -1,6 +1,6 @@
 from numpy import*
-from Data import Data
 from waterplot import*
+from Data import Data
 
 class SpecData(Data):
   def __init__(self, data, t_all, f_all, clean):
