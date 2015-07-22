@@ -1,8 +1,8 @@
 import matplotlib.pylab as plt
 import sys
 from numpy import*
-from SpecData import SpecData
 from Data import Data
+from SpecData import SpecData
 
 pols = (0,3) #xx,yy polarizations
 
