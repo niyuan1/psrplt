@@ -79,7 +79,14 @@ else:
         
         spec = True
         #get total time range
-        if args.time != None and len(args.time.split(':')) == 2:
+        if args.time == 'a': #use time range from file name
+            if telescope == 'jb' or telescope == 'aro':
+                tstart = float(plotFile.split(':')[-1].split('+')[0])
+                tend = float(plotFile.split('+')[-1].split('sec')[0])
+                t_all = (tstart, tend)
+            else: 
+                print "Unrecognized file naming system"
+        elif args.time != None and len(args.time.split(':')) == 2:
             t_all = (float(args.time.split(':')[0]), float(args.time.split(':')[1]))
         elif args.time != None: #nonsensical time given
             sys.exit("give total time limits of all data in seconds as t1:t2")
@@ -87,8 +94,11 @@ else:
             spec = False
         
         #get frequency information
-        if args.freq == 'a' and telescope != None:
-            f_all = f_all
+        if args.freq == 'a': #use full band of telescope info
+            if telescope != None:
+                f_all = f_all
+            else:
+                sys.exit("Unrecognized telescope with which to get band")
         elif args.freq != None and len(args.freq.split(':')) == 2:
             f_all = (float(args.freq.split(':')[0]), float(args.freq.split(':')[1]))
         elif args.freq != None: #nonsensical freq given
