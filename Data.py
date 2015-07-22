@@ -1,5 +1,5 @@
 from numpy import*
-from waterplot import*
+from waterplot import plotter
 
 class Data:
   def __init__(self, data):
