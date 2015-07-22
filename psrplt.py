@@ -83,7 +83,6 @@ else:
             if telescope == 'jb' or telescope == 'aro':
                 tstart = float('.' + plotFile.split(':')[-1].split('.')[1].split('+')[0])
                 tend = tstart + float(plotFile.split('+')[-1].split('sec')[0])
-                print tstart, tend
                 t_all = (tstart, tend)
             else: 
                 print "Unrecognized file naming system"
