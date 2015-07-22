@@ -117,7 +117,7 @@ else:
             f_window = (float(args.freqWindow.split(':')[0]), float(args.freqWindow.split(':')[1]))
             plot = data.cropTime(f_window)
       
-        if len(data.sumPols().shape) == 3:
+        if len(data.sumPols().getData().shape) == 3:
             data.waterplot('i')
           
       
