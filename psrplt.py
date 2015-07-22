@@ -3,6 +3,12 @@ import numpy as np
 import argparse
 from Data import*
 
+#telescope constants
+JB_BAND = (305., 315.)
+JB_CLEAN = (307., 313.)
+ARO_BAND = (400., 800.)
+ARO_CLEAN = (400., 800.)
+
 #parser arguments
 parser = argparse.ArgumentParser(prog='psrplt', description="Plots npy in recognized pulsar format")
 parser.add_argument('files', metavar='files', type=str, nargs='*',
@@ -48,19 +54,23 @@ else:
             if (fileName[:2] == 'jb'):
                 print "assuming file " + plotFile + " is from JB"
                 telescope = "jb"
-                clean = (307., 313.)
+                clean = JB_CLEAN
+                f_all = JB_BAND
             elif (fileName[:3] == 'aro'):
                 print "assuming file " + plotFile + " is from ARO"
                 telescope = "aro"
-                clean = (400., 800.)
+                clean = ARO_CLEAN
+                f_all = ARO_BAND
             else: 
                 telescope = None
         elif args.telescpe == 'jb':
             telescope = "jb"
-            clean = (307., 313.)
+            clean = JB_CLEAN
+            f_all = JB_BAND
         elif args.telescpe == 'aro':
             telescope = "aro"
-            clean = (400., 800.)
+            clean = ARO_CLEAN
+            f_all = ARO_BAND
         else:
             telescope = None
         
@@ -77,7 +87,9 @@ else:
             spec = False
         
         #get frequency information
-        if args.freq != None and len(args.freq.split(':')) == 2:
+        if args.freq == 'a' and telescope != None:
+            f_all = f_all
+        elif args.freq != None and len(args.freq.split(':')) == 2:
             f_all = (args.freq.split(':')[0], args.freq.split(':')[1])
         elif args.freq != None: #nonsensical freq given
             sys.exit("give total freq limits of all data in MHz as f1:f2")
