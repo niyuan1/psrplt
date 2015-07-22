@@ -111,7 +111,16 @@ else:
         else:
             Datas.append(Data(plotNpy))
     
-    #plot data
+    #operate on data and plot
     for data in Datas:
-      print data
+      if args.timeWindow != None: #crop time window
+          t_window = (float(args.timeWindow.split(':')[0]), float(args.timeWindow.split(':')[1]))
+          plot = data.cropTime(t_window)
+      if args.freqWindow != None: #crop freq window
+          f_window = (float(args.freqWindow.split(':')[0]), float(args.freqWindow.split(':')[1]))
+          plot = data.cropTime(f_window)
+      
+      if len(data.sumPols().shape) == 3:
+          data.waterplot('i')
+          
       
