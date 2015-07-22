@@ -1,5 +1,5 @@
 from numpy import*
-from Data import*
+import Data.Data
 
 class SpecData(Data):
   def __init__(self, data, t_all, f_all, clean):
