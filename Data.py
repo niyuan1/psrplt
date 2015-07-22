@@ -13,8 +13,7 @@ class Data:
   def findPulse(self): #gets time bin of giant pulse
     if self.data.shape[-1] == 4:
       print "Polarized data, assuming (0,3) (xx,yy) polarization"
-      pols = (0,3)
-      Unpol.sumPols(pols)
+      Unpol.sumPols((0,3))
     else:
       Unpol = self
     profile = Unpol.data.sum(1) #sum channels
