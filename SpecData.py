@@ -1,5 +1,6 @@
 from numpy import*
 from Data import Data
+from plotter import*
 
 class SpecData(Data):
   def __init__(self, data, t_all, f_all, clean):
@@ -59,13 +60,20 @@ class SpecData(Data):
     data = self.data[:, bstart:bend, ...]
     return SpecData(data, self.t_all, f_window, self.clean)
     
-  def sumPols(self, pols):
-    if self.data.shape[-1] == 4:
-      data = self.data[..., pols].sum(-1)
-    else:
-      print "No polarizations to sum"
-      data = self.data
+  def sumPols(self, pols=None): #sum polarizations
+    if pols != None and self.data.shape[-1] == 4:
+        data = self.data[..., pols].sum(-1)
+    elif self.data.shape[-1] == 4:
+        print "Polarized data, assuming (0,3) (xx,yy) polarization"
+        data = self.data[..., (1,3)].sum(-1)
+    else: 
+        print "Data is unpolarized"
+        data = self.data
     return SpecData(data, self.t_all, self.f_all, self.clean)
   
-  def cleanRFI(self):
+  def cleanRFI(self): #clean known RFI
     return self.cropFreq(self.clean)
+    
+  def waterplot(self, plotType):
+    if plotType == 'i':
+        plotter(self.sumPols(), plotType)
