@@ -1,6 +1,5 @@
 # Psrplt
-A Python based Psrplot like device that operates on and plots 
-Scintellometry npy files in recognized pulsar formats.
+A Python based Psrplot like device that operates on and plots Scintellometry files.
 
 Scintellometry source: https://github.com/mhvk/scintellometry.git
 
@@ -8,7 +7,7 @@ The file psrplt is the interface program that takes command line arguments for P
 
 It incorporates the user friendly features of Argparse to receive and interpret arguments.
 
-As of today, Psrplt is capably of plotting:
+As of now, Psrplt is capably of plotting:
 
 -Waterfall
 
@@ -26,11 +25,11 @@ This propagates to its methods which also operate on units.
 
 
 #psrnpy 
-is a program that allows psrplt compatibility with Psrchive.
+is a program that allows Scintellometry compatibility with Psrchive.
 
 It invokes the Swig based Psrchive python wrapper.
 
-As of today, it converts: 
+As of now, psrnpy converts: 
 
 - Psrchive .FTp and .ar -> .npy
 
