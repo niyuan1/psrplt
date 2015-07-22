@@ -7,10 +7,11 @@ Scintellometry source: https://github.com/mhvk/scintellometry.git
 
 As of today, psrplt is capably of plotting:
 
--Waterfall
+- Waterfall
 
 
-Data is the unit object on which psrplt operates and carries only 
+# Data 
+is the unit object on which psrplt operates and carries only 
 information from the numpy array.
 
 It contains many methods to manipulate and plot Data.
