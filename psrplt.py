@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 import argparse
-import SpecData
+from Data import *
 
 #telescope constants
 JB_BAND = (305., 315.)
