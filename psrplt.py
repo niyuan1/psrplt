@@ -27,8 +27,8 @@ parser.add_argument('-fw', '--freqWindow', type=str, default=None,
                     help="sub-band of total telescope band to plot in MHz, give as f1:f2")
 parser.add_argument('--pulseFinder', type=float, default=None,
                     help="set to find window of <s> seconds around giant pulse and set as time window to plot")
-parser.add_argument('--startTime', type=str, default=None,
-                    help="set start time in ...Hour:Minute:Second")
+parser.add_argument('--title', type=str, default=None,
+                    help="Give title to plot")
 args = parser.parse_args()
 
 if args.plot == 'P':
@@ -37,16 +37,6 @@ if args.plot == 'P':
     print "[c] compare intensity profile with intensity spectrum profile"
     print "[p] compare 4 polarization intensity spectrum profile"
 else:
-    #make a title
-    if args.startTime != None:
-        title = args.startTime #give title to plots as startTime
-    else:
-        title = ""
-    if args.pulseFinder != None:
-        title = "Giant Pulse " + title
-    else:
-        title = "Plot " + title
-        
     Datas = [] # make list of data objects
     for plotFile in args.files: #understand files, make data objects
         if args.telescope == None: #attempt to find telescope name from file
@@ -74,6 +64,16 @@ else:
         else:
             telescope = None
         
+        #make a title
+        if telescope != None:
+            title = telescope + " " #start title as telescope name
+        if args.pulseFinder != None:
+            title += "Giant Pulse "
+        if args.title == 'a':
+            title = title + plotFile.split('T')[-1].split('.')[0]
+        elif args.title != None:
+            title = title + args.title
+        
         #load numpy file containing data
         plotNpy = np.load(plotFile)
         
@@ -81,7 +81,7 @@ else:
         #get total time range
         if args.time == 'a': #use time range from file name
             if telescope == 'jb' or telescope == 'aro':
-                tstart = float(plotFile.split(':')[-1].split('+')[0])
+                tstart = float(plotFile.split('.')[-1].split('+')[0])
                 tend = float(plotFile.split('+')[-1].split('sec')[0])
                 t_all = (tstart, tend)
             else: 
