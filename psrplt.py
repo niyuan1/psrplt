@@ -80,7 +80,7 @@ else:
         spec = True
         #get total time range
         if args.time != None and len(args.time.split(':')) == 2:
-            t_all = (args.time.split(':')[0], args.time.split(':')[1])
+            t_all = (float(args.time.split(':')[0]), float(args.time.split(':')[1]))
         elif args.time != None: #nonsensical time given
             sys.exit("give total time limits of all data in seconds as t1:t2")
         else: #no time information given
@@ -90,7 +90,7 @@ else:
         if args.freq == 'a' and telescope != None:
             f_all = f_all
         elif args.freq != None and len(args.freq.split(':')) == 2:
-            f_all = (args.freq.split(':')[0], args.freq.split(':')[1])
+            f_all = (float(args.freq.split(':')[0]), float(args.freq.split(':')[1]))
         elif args.freq != None: #nonsensical freq given
             sys.exit("give total freq limits of all data in MHz as f1:f2")
         else: #no frequency information given
