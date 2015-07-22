@@ -19,6 +19,7 @@ class SpecData(Data):
     
   def __str__(self):
     tstart, tend = self.t_all[0], self.t_all[1]
+    print tstart, tend 
     fstart, fend = self.f_all[0], self.f_all[1]
     cstart, cend = self.clean[0], self.clean[1]
     return "Data: time %d:%d, band %d:%d, clean %d:%d" % (tstart, tend, fstart, fend, cstart, cend)
