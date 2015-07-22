@@ -1,4 +1,5 @@
 from numpy import*
+from waterplot import*
 
 class Data:
   def __init__(self, data):
