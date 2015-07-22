@@ -2,7 +2,6 @@ import matplotlib.pylab as plt
 import sys
 from numpy import*
 import Data
-import SpecData
 
 pols = (0,3) #xx,yy polarizations
 
@@ -21,7 +20,7 @@ def plotIntensity(data): #plots intensity in color map
       sys.exit("Waterplot may only plot waterfall files")
   vmin, vmax = vlim(plot) #get color scale
       
-  if isinstance(data, SpecData.SpecData):
+  if isinstance(data, Data.SpecData):
       t_all = data.getTrange()
       f_all = data.getFrange()
       plt.imshow(i.T, aspect='auto', interpolation='nearest', 
