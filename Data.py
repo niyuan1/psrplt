@@ -21,10 +21,12 @@ class Data:
     return self.cropTime(t)
     
   def cropTime(self, t_window): #operate on data, crop time axis
+    bstart, bend = int(t_window[0]), int(t_window[1])
     data = self.data[bstart:bend, ...]
     return Data(data)
     
   def cropFreq(self, f_window): #operate on data, crop freq axis
+    bstart, bend = int(f_window[0]), int(f_window[1])
     data = self.data[:, bstart:bend, ...]
     return Data(data)
     
