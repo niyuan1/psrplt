@@ -37,7 +37,7 @@ As of now, psrnpy converts:
 #waterplot 
 is the plotting program for waterfall data.
 
-As of today, waterplot is capable of plotting:
+As of now, waterplot plots:
 
 - Intensity map
 
