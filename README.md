@@ -14,15 +14,15 @@ As of today, Psrplt is capably of plotting:
 
 
 # Data 
-is the unit object on which psrplt operates and carries only 
-information from the numpy array.
+defines objects on which Psrplot operates.
 
-It contains many methods to manipulate and plot Data.
+Data is the most basic Data object.
 
+It has many methods to manipulate and plot Data.
 
-#SpecData 
-inherits from Data and in addition carries information about physical units 
-which propagate to its methods which also account for units.
+SpecData inherits from Data and in addition carries information about physical units.
+
+This propagates to its methods which also operate on units.
 
 
 #psrnpy 
