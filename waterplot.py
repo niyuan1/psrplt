@@ -19,13 +19,13 @@ def plotIntensity(data): #plots intensity in color map
       sys.exit("Waterplot may only plot waterfall files")
   vmin, vmax = vlim(plot) #get color scale
       
-  if type(data) is SpecData:
+  if isinstance(data, SpecData):
       t_all = data.getTrange()
       f_all = data.getFrange()
       plt.imshow(i.T, aspect='auto', interpolation='nearest', 
              origin='lower', cmap=plt.get_cmap('Greys'), 
              extent= t_all + f_all, vmin=vmin, vmax=vmax)
-  elif type(data) is Data:
+  elif isinstance(data, Data):
       plt.imshow(i.T, aspect='auto', interpolation='nearest', 
              origin='lower', cmap=plt.get_cmap('Greys'), 
              vmin=vmin, vmax=vmax)
