@@ -23,11 +23,11 @@ def plotIntensity(data): #plots intensity in color map
   if isinstance(data, Data.SpecData):
       t_all = data.getTrange()
       f_all = data.getFrange()
-      plt.imshow(i.T, aspect='auto', interpolation='nearest', 
+      plt.imshow(data.T, aspect='auto', interpolation='nearest', 
              origin='lower', cmap=plt.get_cmap('Greys'), 
              extent= t_all + f_all, vmin=vmin, vmax=vmax)
   elif isinstance(data, Data.Data):
-      plt.imshow(i.T, aspect='auto', interpolation='nearest', 
+      plt.imshow(data.T, aspect='auto', interpolation='nearest', 
              origin='lower', cmap=plt.get_cmap('Greys'), 
              vmin=vmin, vmax=vmax)
   plt.show()
