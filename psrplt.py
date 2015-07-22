@@ -46,11 +46,11 @@ else:
         if args.telescope == None: #attempt to find telescope name from file
             fileName = plotFile.split('/')[-1]
             if (fileName[:2] == 'jb'):
-                print "assuming " + plotFile + "is from JB"
+                print "assuming file " + plotFile + " is from JB"
                 telescope = "jb"
                 clean = (307., 313.)
             elif (fileName[:3] == 'aro'):
-                print "assuming " + plotFile + "is from ARO"
+                print "assuming file " + plotFile + " is from ARO"
                 telescope = "aro"
                 clean = (400., 800.)
             else: 
