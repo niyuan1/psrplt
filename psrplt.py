@@ -107,6 +107,7 @@ else:
             spec = False
             
         if spec:
+          print t_all
           Datas.append(SpecData(plotNpy, t_all, f_all, clean))
         else:
           Datas.append(Data(plotNpy))
