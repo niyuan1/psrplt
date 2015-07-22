@@ -11,11 +11,7 @@ class Data:
     return "Data: undefined time, undefined band"
     
   def findPulse(self): #gets time bin of giant pulse
-    if self.data.shape[-1] == 4:
-      print "Polarized data, assuming (0,3) (xx,yy) polarization"
-      Unpol = self.sumPols((0,3))
-    else:
-      Unpol = self
+    Unpol = self.sumPols().getData()
     profile = Unpol.data.sum(1) #sum channels
     return profile.argmax() #get maximum (giant pulse) bin
     
@@ -32,10 +28,16 @@ class Data:
     data = self.data[:, bstart:bend, ...]
     return Data(data)
     
-  def sumPols(self, pols):
-    if self.data.shape[-1] == 4:
-      data = self.data[..., pols].sum(-1)
-    else:
-      print "No polarizations to sum"
-      data = self.data
+  def sumPols(self, pols=None):
+    if pols != None and self.data.shape[-1] == 4:
+        data = self.data[..., pols].sum(-1)
+    elif self.data.shape[-1] == 4:
+        print "Assuming (0,3) (xx,yy) polarization"
+        data = self.data[..., (1,3)].sum(-1)
+    else: 
+        data = self.data
     return Data(data)
+
+  def waterplot(self, plotType):
+    if plotType == 'i':
+        plotter(self.sumPols(), plotType)
