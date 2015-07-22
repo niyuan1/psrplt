@@ -1,4 +1,4 @@
-from SpecData import SpecData
+from SpecData import*
 from numpy import*
 
 class Data:
