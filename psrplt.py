@@ -107,11 +107,11 @@ else:
             spec = False
             
         if spec:
-          Datas.append(SpecData(plotNpy, t_all, f_all, clean))
+            Datas.append(SpecData(plotNpy, t_all, f_all, clean))
         else:
-          Datas.append(Data(plotNpy))
+            Datas.append(Data(plotNpy))
     
     #plot data
     for data in Datas:
-      print data.getTrange
+      print data.getTrange()
       
