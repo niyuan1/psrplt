@@ -1,5 +1,4 @@
 from numpy import*
-from SpecData import SpecData
 from waterplot import*
 
 class Data:
