@@ -9,7 +9,7 @@ It incorporates the user friendly features of Argparse to receive and interpret 
 
 As of now, Psrplt is capably of plotting:
 
--Waterfall
+- Waterfall
 
 
 # Data 
